@@ -7,6 +7,8 @@ By Synraw / Mike
 */
 #pragma once
 
+#include "MArray.h"
+
 namespace Moho
 {
 	class MapRelated;
@@ -31,8 +33,7 @@ namespace Moho
 	private:
 		char pad_0x0924[0x14]; //0x0924
 	public:
-		SimArmy** m_pArmyList; //0x0938 
-		SimArmy** m_pArmyListEnd; //0x093C 
+		MArray<SimArmy*> m_armyList;
 	};
 
 	class MapInfo

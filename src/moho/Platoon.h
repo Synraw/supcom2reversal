@@ -8,6 +8,7 @@ By Synraw / Mike
 #pragma once
 
 #include "MString.h"
+#include "MArray.h"
 
 namespace Moho
 {
@@ -15,14 +16,13 @@ namespace Moho
 	class PlatoonUnitGroup;
 	class Unit;
 
-	class CPlatoon
+	class Platoon
 	{
 	public:
 	private:
 		char pad_0x0000[0x38]; //0x0000
 	public:
-		PlatoonUnitGroup** m_pUnitGroupList; //0x0038 
-		PlatoonUnitGroup** m_pUnitGroupListEnd; //0x003C 
+		MArray<PlatoonUnitGroup*> m_unitGroupList;
 	private:
 		char pad_0x0040[0x2C]; //0x0040
 	public:
@@ -51,8 +51,7 @@ namespace Moho
 	private:
 		char pad_0x0000[0x8]; //0x0000
 	public:
-		Unit** m_pUnits; //0x0008 
-		Unit** m_pUnitsEnd;
+		MArray<Unit*> m_units;
 	}; //Size=0x0058
 
 	class PlatoonTask

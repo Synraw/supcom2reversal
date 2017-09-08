@@ -9,6 +9,7 @@ By Synraw / Mike
 
 #include "Math.h"
 #include "MString.h"
+#include "MArray.h"
 
 namespace Moho
 {
@@ -76,8 +77,7 @@ namespace Moho
 	private:
 		char pad_0x02B8[0x8]; //0x02B8
 	public:
-		Platoon** m_pPlatoonList; //0x02C0 
-		Platoon** m_pPlatoonListEnd;
+		MArray<Platoon*> m_platoonList;
 
 		std::string GetFactionName()
 		{

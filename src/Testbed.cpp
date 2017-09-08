@@ -12,6 +12,9 @@ By Synraw / Mike
 #include <iostream>
 #include <Windows.h>
 
+// Used for unloading ourself
+HMODULE thisMod = 0;
+
 /*
 	Initial setup when we first load
 	This function is ran as its own thread from DLLMain
@@ -28,13 +31,25 @@ DWORD WINAPI InitialThread(LPVOID lpThreadParameter)
 
 	if (simDriver != nullptr)
 	{
-		for (auto i = simDriver->m_pSim->m_pArmyList; i != simDriver->m_pSim->m_pArmyListEnd; i++)
+		for (auto army : simDriver->m_pSim->m_armyList)
 		{
-			Moho::SimArmy* army = *i;
-			std::cout << "Army owned by " << army->m_strPlayerName.Get() << " is of faction " << army->GetFactionName() << std::endl;
+			std::cout << "Army owned by " << army->m_strPlayerName.get() << " is of faction " << army->GetFactionName() << std::endl;
+			for (auto platoon : army->m_platoonList)
+			{
+				std::cout << "\tPlatoon " << platoon->m_strName.get() << "(" << platoon->m_strOtherName.get() 
+					<< ") has " << platoon->m_unitGroupList.size() << " unit groups\n";
+
+				for (auto tempunit : platoon->m_unitGroupList[0]->m_units)
+				{
+					Moho::Unit* pUnit = tempunit->FixPointer();
+
+					std::cout << "\t\tUnit " << pUnit->m_pBlueprint->m_strDisplayName.get() << " - " << pUnit->m_pBlueprint->m_strDescription.get() << std::endl;
+				}
+			}
 		}
 	}
 
+	FreeLibraryAndExitThread(thisMod, 0);
 	return 0;
 }
 
@@ -48,6 +63,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 	switch (fdwReason)
 	{
 	case DLL_PROCESS_ATTACH:
+		thisMod = hinstDLL;
 		CreateThread(NULL, NULL, InitialThread, NULL, NULL, NULL);
 		break;
 	case DLL_PROCESS_DETACH:

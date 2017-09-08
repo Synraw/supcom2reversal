@@ -32,13 +32,13 @@ namespace Moho
 
 	public:
 
-		inline std::string Get()
+		inline std::string get()
 		{
 			return m_szTextLength < 16 ? m_chBuffer : m_pText;
 		}
 
-		inline int Length() { return m_szTextLength; }
-		inline int BufferSize() { return m_szBufferSize; }
+		inline int length() { return m_szTextLength; }
+		inline int bufferSize() { return m_szBufferSize; }
 	};
 }
 

@@ -48,6 +48,13 @@ namespace Moho
 	private:
 		char pad_0x09B0[0x2D0]; //0x09B0
 
+	public:
+
+		Unit* FixPointer()
+		{
+			return (Unit*)((unsigned int)this - 8);
+		}
+
 	}; //Size=0x0C80
 
 	class UnitBlueprint
@@ -57,13 +64,20 @@ namespace Moho
 	public:
 		MString m_strInternalName; //0x000C 
 	private:
-		char pad_0x0024[0x20]; //0x0024
+		char pad_0x0024[0x4]; //0x0024
 	public:
-		MString m_strUnitBPFile; //0x0044 
+		MString m_strDescription;
 	private:
-		char pad_0x005C[0x15C]; //0x005C
+		char pad_0x0040[0x4]; //0x0040
 	public:
-		MString m_strName;
-	}; //Size=0x0598
-
+		MString m_szUnitBPFile; //0x0044 
+	private:
+		char pad_0x005C[0x100]; //0x005C
+	public:
+		MString m_strIconName;
+	private:
+		char pad_0x0174[0x2B4]; //0x0174
+	public:
+		MString m_strDisplayName;
+	};
 }
