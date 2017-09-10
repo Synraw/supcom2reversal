@@ -29,6 +29,8 @@ DWORD WINAPI InitialThread(LPVOID lpThreadParameter)
 	// Test access to the engine
 	Moho::SimDriver* simDriver = Moho::SimDriver::GetInstance();
 
+	Moho::SimArmy* firstArmy = nullptr;
+	bool added = false;
 	if (simDriver != nullptr)
 	{
 		for (auto army : simDriver->m_pSim->m_armyList)
@@ -43,9 +45,17 @@ DWORD WINAPI InitialThread(LPVOID lpThreadParameter)
 				{
 					Moho::Unit* pUnit = tempunit->FixPointer();
 
-					std::cout << "\t\tUnit " << pUnit->m_pBlueprint->m_strDisplayName.get() << " - " << pUnit->m_pBlueprint->m_strDescription.get() << std::endl;
+					std::cout << "\t\t[0x" << std::hex << (DWORD)pUnit << "] " << pUnit->m_pBlueprint->m_strUnitType.get() << " - " << Moho::StrStripTags(pUnit->m_pBlueprint->m_strUnitName.get()) << std::endl;
+
+					if (firstArmy && added == false)
+					{
+						firstArmy->AddUnitToArmy(pUnit);
+					}
 				}
 			}
+
+			if (firstArmy == nullptr)
+				firstArmy = army;
 		}
 	}
 

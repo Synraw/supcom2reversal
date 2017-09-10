@@ -9,11 +9,13 @@ By Synraw / Mike
 
 // All the Moho engine includes
 #include "MString.h"
+#include "MArray.h"
 #include "SimDriver.h"
 #include "Sim.h"
 #include "SimArmy.h"
 #include "Platoon.h"
 #include "Unit.h"
+#include "Utils.h"
 
 namespace Moho
 {

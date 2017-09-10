@@ -10,5 +10,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 add_definitions(-D_MBCS -DMBCS )
 
 # Build!
-file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE SOURCES "*.cpp")
 add_library(Supcom SHARED ${SOURCES})

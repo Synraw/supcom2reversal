@@ -78,6 +78,10 @@ namespace Moho
 	private:
 		char pad_0x0174[0x2B4]; //0x0174
 	public:
-		MString m_strDisplayName;
+		MString m_strUnitType;
+	private:
+		char pad_0x0440[0x44]; //0x0440
+	public:
+		MString m_strUnitName;
 	};
 }

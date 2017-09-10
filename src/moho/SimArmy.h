@@ -27,11 +27,84 @@ namespace Moho
 	class AiReconDB;
 	class ArmyStats;
 	class Platoon;
+	class Unit;
 
 	class SimArmy
 	{
+	public:
+		virtual void Function0(void) = 0;
+		virtual Sim* GetParentSim(void) = 0;
+		virtual bool IsHumanPlayer(void) = 0;
+		virtual const char* GetDifficulty(void) = 0;
+		virtual void Function4(void) = 0;
+		virtual const char* GetAIScriptPath(void) = 0;
+		virtual void Function6(void) = 0;
+		virtual AiBrain* GetAIBrain(void) = 0;
+		virtual AiReconDB* GetAIReconDB(void) = 0;
+		virtual ArmyResources* GetResources(void) = 0;
+		virtual void Function10(void) = 0;
+		virtual void Function11(void) = 0;
+		virtual void Function12(void) = 0;
+		virtual void Function13(void) = 0;
+		virtual void Function14(void) = 0;
+		virtual void Function15(void) = 0;
+		virtual void Function16(void) = 0;
+		virtual void Function17(void) = 0;
+		virtual void Function18(void) = 0;
+		virtual void Function19(void) = 0;
+		virtual void Function20(void) = 0;
+		virtual void Function21(void) = 0;
+		virtual void Function22(void) = 0;
+		virtual void Function23(void) = 0;
+		virtual void Function24(void) = 0;
+		virtual Platoon* GetPlatoonByName(const char* name) = 0;
+		virtual Platoon* GetUnitPlatoon(Unit* unit, int* something) = 0;
+		virtual Platoon* GetPlatoonInArea(Vector3* location, float distance, Platoon* ignore, int taskNumber) = 0;
+		virtual void Function28(void) = 0;
+		virtual void Function29(void) = 0;
+		virtual void Function30(void) = 0;
+		virtual void Function31(void) = 0;
+		virtual void Function32(void) = 0;
+		virtual void Function33(void) = 0;
+		virtual void Function34(void) = 0;
+		virtual void Function35(void) = 0;
+		virtual void Function36(void) = 0;
+		virtual void AddUnitToArmy(Unit* unit) = 0;
+		virtual void Function38(void) = 0;
+		virtual void Function39(void) = 0;
+		virtual void Function40(void) = 0;
+		virtual void Function41(void) = 0;
+		virtual void Function42(void) = 0;
+		virtual void Function43(void) = 0;
+		virtual void Function44(void) = 0;
+		virtual void Function45(void) = 0;
+		virtual void Function46(void) = 0;
+		virtual void Function47(void) = 0;
+		virtual void Function48(void) = 0;
+		virtual void Function49(void) = 0;
+		virtual void Function50(void) = 0;
+		virtual void Function51(void) = 0;
+		virtual void Function52(void) = 0;
+		virtual void Function53(void) = 0;
+		virtual void Function54(void) = 0;
+		virtual void Function55(void) = 0;
+		virtual void Function56(void) = 0;
+		virtual void Function57(void) = 0;
+		virtual void Function58(void) = 0;
+		virtual void Function59(void) = 0;
+		virtual void Function60(void) = 0;
+		virtual void Function61(void) = 0;
+		virtual void Function62(void) = 0;
+		virtual void Function63(void) = 0;
+		virtual void Function64(void) = 0;
+		virtual void Function65(void) = 0;
+		virtual void Function66(void) = 0;
+		virtual void Function67(void) = 0;
+		virtual void Function68(void) = 0;
+		virtual void Function69(void) = 0;
+		virtual void Function70(void) = 0;
 	private:
-		char pad_0x0000[0x10]; //0x0000
+		char pad_0x0000[0xC]; //0x0000
 	public:
 		MString m_strArmyName;
 	private:
@@ -91,7 +164,7 @@ namespace Moho
 				return "Aeon";
 			default:
 				return "Unknown";
-			}
+			};
 		}
 	}; //Size=0x0580
 
