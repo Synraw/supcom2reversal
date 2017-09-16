@@ -72,15 +72,4 @@
 69	sub_80BCD0
 70	sub_810650
 71	sub_810DE0
-72	const Moho::CArmyImplTypeInfo::`RTTI Complete Object Locator'
-73	sub_402840
-74	sub_4027E0
-75	sub_80BD90
-76	sub_80BD80
-77	sub_B5C850
-78	sub_B5C890
-79	sub_4027B0
-80	sub_4027D0
-81	sub_4027C0
-82	sub_80BD40
-83	sub_B5C6E0
+

@@ -15,6 +15,7 @@ By Synraw / Mike
 #include "SimArmy.h"
 #include "Platoon.h"
 #include "Unit.h"
+#include "Rendering.h"
 #include "Utils.h"
 
 namespace Moho
