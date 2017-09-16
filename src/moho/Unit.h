@@ -13,29 +13,45 @@ By Synraw / Mike
 namespace Moho
 {
 	class UnitBlueprint;
+	class Sim;
 	class SimArmy;
 	class Platoon;
+	class CollisionPrimitive;
 
 	class Unit
 	{
-	private:
-		char pad_0x0000[0xB0]; //0x0000
 	public:
+		virtual void Function0(); //
+		virtual void Function1(); //
+		virtual void Function2(); //
+	private:
+		char pad_0x0004[0x90]; //0x0004
+	public:
+		float m_flHealth; //0x0094 
+		float m_flHealthMax; //0x0098 
+		float m_flRegenRate; //0x009C 
+		Vector4 m_vecRotation; //0x00A0 
 		Vector4 m_vecPosition; //0x00B0 
 	private:
 		char pad_0x00C0[0xDC]; //0x00C0
 	public:
 		UnitBlueprint* m_pBlueprint; //0x019C 
 	private:
-		char pad_0x01A0[0x10]; //0x01A0
+		char pad_0x01A0[0xC]; //0x01A0
 	public:
-		SimArmy* m_pParentArmy; //0x01B0 
+		Sim* m_pOwningSim; //0x01AC 
+		SimArmy* m_pOwningArmy; //0x01B0 
 	private:
-		char pad_0x01B4[0x34]; //0x01B4
+		char pad_0x01B4[0x28]; //0x01B4
 	public:
-		void* N000010ED; //0x01E8 
+		CollisionPrimitive* m_pCollisionPrim; //0x01DC 
 	private:
-		char pad_0x01EC[0x69C]; //0x01EC
+		char pad_0x01E0[0x74]; //0x01E0
+	public:
+		Vector3 m_vecMin; //0x0254 
+		Vector3 m_vecMax; //0x0260 
+	private:
+		char pad_0x026C[0x61C]; //0x026C
 	public:
 		Platoon* m_pPlatoon; //0x0888 
 	private:
@@ -84,4 +100,23 @@ namespace Moho
 	public:
 		MString m_strUnitName;
 	};
+
+	struct CollisionAABB
+	{
+		Vector3 m_vecMin; //0x0000 
+		Vector3 m_vecMax; //0x000C 
+	}; //Size=0x0018
+
+	class CollisionPrimitive
+	{
+	public:
+		virtual void GetCollisionExtents(CollisionAABB* out); //
+		virtual void Function1(); //
+		virtual void Function2(); //
+
+		Vector3 m_Origin; //0x0004 
+	private:
+		char pad_0x0010[0x74]; //0x0010
+
+	}; //Size=0x0084
 }

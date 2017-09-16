@@ -29,4 +29,18 @@ namespace Moho
 		LPDIRECT3DDEVICE9 m_pDevice; //0x009C 
 	};
 
+	class RenViewport
+	{
+	public:
+		static RenViewport* GetInstance()
+		{
+			return *(RenViewport**)(Offsets::ADDR_RENDERVIEWPORT);
+		}
+	private:
+		char pad_0x0000[0x180]; //0x0000
+	public:
+		int m_iScreenWidth; //0x0180 
+		int m_iScreenHeight; //0x0184 
+	}; //Size=0x01A0
+
 }

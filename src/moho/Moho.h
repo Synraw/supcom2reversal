@@ -17,6 +17,7 @@ By Synraw / Mike
 #include "Unit.h"
 #include "Rendering.h"
 #include "Utils.h"
+#include "Camera.h"
 
 namespace Moho
 {

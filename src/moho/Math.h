@@ -7,27 +7,14 @@ By Synraw / Mike
 */
 #pragma once
 
-/****************************************************************************************
-
-		          NOTE: These are just temp definitions for now
-	I'll probably end up swapping them out with the D3DX Vector types at some point
-
-****************************************************************************************/
+#include <d3d9.h>
+#include <d3dx9.h>
 
 namespace Moho
 {
-	struct Vector2
-	{
-		float x, y;
-	};
+	typedef D3DXVECTOR2 Vector2;
 
-	struct Vector3
-	{
-		float x, y, z;
-	};
+	typedef D3DXVECTOR3 Vector3;
 
-	struct Vector4
-	{
-		float x, y, z, w;
-	};
+	typedef D3DXVECTOR4 Vector4;
 }

@@ -18,52 +18,14 @@ By Synraw / Mike
 // Used for unloading ourself
 HMODULE thisMod = 0;
 
-// World to Screen stuff
-D3DXMATRIX   viewprojection;
-D3DVIEWPORT9 viewport;
-
 // Rendering related
 typedef HRESULT(__stdcall* Present) (LPDIRECT3DDEVICE9, CONST RECT*, CONST RECT*, HWND, CONST RGNDATA*);
 typedef HRESULT(__stdcall* Reset) (LPDIRECT3DDEVICE9, D3DPRESENT_PARAMETERS*);
-typedef HRESULT(__stdcall* DrawIndexedPrimitive)(LPDIRECT3DDEVICE9 pDev, D3DPRIMITIVETYPE Type, INT Base, UINT Min, UINT Num, UINT Start, UINT Prim);
 HRESULT __stdcall mPresent(LPDIRECT3DDEVICE9 Device, CONST RECT* pSourceRect, CONST RECT* pDestRect, HWND hDestWindowOverride, CONST RGNDATA* pDirtyRegion);
 HRESULT __stdcall mReset(LPDIRECT3DDEVICE9 Device, D3DPRESENT_PARAMETERS* p);
 Present oPresent;
 Reset oReset;
-DrawIndexedPrimitive oDIP;
 Memory::VMTManager DirectXVMTManager;
-
-/*
- Temporary hook to grab the View Projection matrix from the shader constants when rendering the game models
- Will remove once I find where the game is storing the matrix
-*/
-HRESULT WINAPI nDrawIdP(LPDIRECT3DDEVICE9 pDevice, D3DPRIMITIVETYPE Type, INT Base, UINT Min, UINT Num, UINT Start, UINT Prim)
-{
-	LPDIRECT3DVERTEXBUFFER9 Stream_Data;
-	UINT Offset = 0;
-	UINT Stride = 0;
-
-	if (pDevice->GetStreamSource
-	(0, &Stream_Data, &Offset, &Stride) == S_OK)
-		Stream_Data->Release();
-
-	// 36 seems to be world objects
-	if (Stride == 36)
-	{
-		pDevice->GetVertexShaderConstantF(7, viewprojection, 4);
-	}
-
-	return oDIP(pDevice, Type, Base, Min, Num, Start, Prim);
-}
-
-bool WorldToScreen(const D3DXVECTOR3& WorldPos, D3DXVECTOR3* ScreenPos)
-{
-	D3DXMATRIXA16 viewProj, identity;
-	D3DXMatrixIdentity(&identity);
-	D3DXMatrixTranspose (&viewProj, &viewprojection);
-	D3DXVec3Project(ScreenPos, &WorldPos, &viewport, &viewProj, &identity, &identity);
-	return ScreenPos->z < 1.0f;
-}
 
 /*
 	Initial setup when we first load
@@ -85,9 +47,74 @@ DWORD WINAPI InitialThread(LPVOID lpThreadParameter)
 	DirectXVMTManager.Initialise((DWORD*)d3d9Render->m_pDevice);
 	oPresent = (Present)DirectXVMTManager.HookMethod((DWORD)&mPresent, 17);
 	oReset = (Reset)DirectXVMTManager.HookMethod((DWORD)&mReset, 16);
-	oDIP = (DrawIndexedPrimitive)DirectXVMTManager.HookMethod((DWORD)&nDrawIdP, 82);
 
 	return 0;
+}
+
+struct ScreenRect
+{
+	float x, y, w, h;
+};
+
+bool GetBox(Moho::Unit* pEntity, ScreenRect &result)
+{
+	// Variables
+	Moho::CollisionAABB aabb;
+	Moho::Vector3 vOrigin, min, max, sMin, sMax, sOrigin,
+		flb, brt, blb, frt, frb, brb, blt, flt;
+	float left, top, right, bottom;
+
+	// Get the locations
+	pEntity->m_pCollisionPrim->GetCollisionExtents(&aabb);
+	
+
+	// Points of a 3d bounding box
+	Moho::Vector3 points[] = { Moho::Vector3{aabb.m_vecMin.x, aabb.m_vecMin.y, aabb.m_vecMin.z},
+		Moho::Vector3{ aabb.m_vecMin.x, aabb.m_vecMax.y, aabb.m_vecMin.z},
+		Moho::Vector3{ aabb.m_vecMax.x, aabb.m_vecMax.y, aabb.m_vecMin.z},
+		Moho::Vector3{ aabb.m_vecMax.x, aabb.m_vecMin.y, aabb.m_vecMin.z},
+		Moho::Vector3{ aabb.m_vecMax.x, aabb.m_vecMax.y, aabb.m_vecMax.z},
+		Moho::Vector3{ aabb.m_vecMin.x, aabb.m_vecMax.y, aabb.m_vecMax.z},
+		Moho::Vector3{ aabb.m_vecMin.x, aabb.m_vecMin.y, aabb.m_vecMax.z},
+		Moho::Vector3{ aabb.m_vecMax.x, aabb.m_vecMin.y, aabb.m_vecMax.z} };
+
+
+	// Get screen positions
+	if (!Moho::WorldToScreen(points[3], flb) || !Moho::WorldToScreen(points[5], brt)
+		|| !Moho::WorldToScreen(points[0], blb) || !Moho::WorldToScreen(points[4], frt)
+		|| !Moho::WorldToScreen(points[2], frb) || !Moho::WorldToScreen(points[1], brb)
+		|| !Moho::WorldToScreen(points[6], blt) || !Moho::WorldToScreen(points[7], flt))
+		return false;
+
+	// Put them in an array (maybe start them off in one later for speed?)
+	Moho::Vector3 arr[] = { flb, brt, blb, frt, frb, brb, blt, flt };
+
+	// Init this shit
+	left = flb.x;
+	top = flb.y;
+	right = flb.x;
+	bottom = flb.y;
+
+	// Find the bounding corners for our box
+	for (int i = 1; i < 8; i++)
+	{
+		if (left > arr[i].x)
+			left = arr[i].x;
+		if (bottom < arr[i].y)
+			bottom = arr[i].y;
+		if (right < arr[i].x)
+			right = arr[i].x;
+		if (top > arr[i].y)
+			top = arr[i].y;
+	}
+
+	// Width / height
+	result.x = left;
+	result.y = top;
+	result.w = right - left;
+	result.h = bottom - top;
+
+	return true;
 }
 
 /*
@@ -100,8 +127,6 @@ HRESULT __stdcall mPresent(LPDIRECT3DDEVICE9 Device, CONST RECT* pSourceRect, CO
 	//-------------------------------------------------------
 
 	r->Text(10, 10, Renderer::FontMain, D3DCOLOR_RGBA(255, 255, 255, 170), Moho::GAME_NAME);
-
-	Device->GetViewport(&viewport);
 
 	Moho::SimDriver* simDriver = Moho::SimDriver::GetInstance();
 
@@ -116,10 +141,28 @@ HRESULT __stdcall mPresent(LPDIRECT3DDEVICE9 Device, CONST RECT* pSourceRect, CO
 					Moho::Unit* pUnit = tempunit->FixPointer();
 					if (pUnit && pUnit->m_pBlueprint && pUnit->m_pBlueprint->m_strUnitName.length() > 0)
 					{
-						D3DXVECTOR3 result;
-						if (WorldToScreen(D3DXVECTOR3(pUnit->m_vecPosition.x, pUnit->m_vecPosition.y, pUnit->m_vecPosition.z), &result))
+						D3DXVECTOR3 result; ScreenRect box;
+						if (Moho::WorldToScreen(Moho::Vector3(pUnit->m_vecPosition.x, pUnit->m_vecPosition.y, pUnit->m_vecPosition.z), result))
 						{
-							r->Text(result.x, result.y, Renderer::FontESP, army->m_argbTeamColour, Moho::StrStripTags(pUnit->m_pBlueprint->m_strUnitName.get()).c_str());
+							if (pUnit->m_pCollisionPrim && GetBox(pUnit, box))
+							{
+								// Text centering stuff
+								std::string strUnitName = Moho::StrStripTags(pUnit->m_pBlueprint->m_strUnitName.get());
+								int width = r->GetTextWidth(Renderer::FontESP, strUnitName.c_str());
+
+								r->Outline(box.x, box.y, box.w, box.h, army->m_argbTeamColour);
+								r->Outline(box.x-1, box.y-1, box.w+2, box.h+2, D3DCOLOR_ARGB(255, 0, 0, 0));
+								r->Outline(box.x+1, box.y+1, box.w-2, box.h-2, D3DCOLOR_ARGB(255, 0, 0, 0));
+
+								// Text w/ shadow
+								r->Text(box.x + (box.w/2) - (width/2) + 1, box.y - 15, Renderer::FontESP, D3DCOLOR_ARGB(255,0,0,0), strUnitName.c_str());
+								r->Text(box.x + (box.w / 2) - (width / 2), box.y - 16, Renderer::FontESP, army->m_argbTeamColour, strUnitName.c_str());
+
+							}
+							else
+							{
+								r->Text(result.x, result.y, Renderer::FontESP, army->m_argbTeamColour, Moho::StrStripTags(pUnit->m_pBlueprint->m_strUnitName.get()).c_str());
+							}
 						}
 					}
 				}
