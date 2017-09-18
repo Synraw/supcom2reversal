@@ -16,5 +16,8 @@ namespace Moho
 		constexpr unsigned int ADDR_WORLDMAP   = 0x18CA5C0;
 		constexpr unsigned int ADDR_CAMERALIST = 0x193477C;
 		constexpr unsigned int ADDR_RENDERVIEWPORT = 0x18CA588;
+		constexpr unsigned int ADDR_GLOBALLUAOBJ   = 0x18CA654;
+
+		constexpr unsigned int FUNC_EXECUTELUA = 0x00501E00;
 	}
 }

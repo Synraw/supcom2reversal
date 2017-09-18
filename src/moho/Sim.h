@@ -13,6 +13,7 @@ namespace Moho
 {
 	class MapRelated;
 	class SimArmy;
+	class LuaObject;
 
 	class Sim
 	{
@@ -22,7 +23,9 @@ namespace Moho
 		MapRelated* m_pMapRelated; //0x08D0 
 	private:
 		char pad_0x08D4[0x8]; //0x08D4
-		void* somethingLuaRelated; //0x08DC I'll figure this out later but its references a lot
+	public:
+		LuaObject* luaObject; //0x08DC
+	private:
 		char pad_0x08E0[0x38]; //0x08E0
 	public:
 		int m_iBeatNumber; //0x0918 

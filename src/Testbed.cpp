@@ -14,6 +14,8 @@ By Synraw / Mike
 #include <iostream>
 #include <Windows.h>
 #include <fstream>
+#include <detours.h>
+
 
 // Used for unloading ourself
 HMODULE thisMod = 0;
@@ -42,11 +44,29 @@ DWORD WINAPI InitialThread(LPVOID lpThreadParameter)
 	Moho::SimDriver* simDriver = Moho::SimDriver::GetInstance();
 	Moho::DeviceD3D9* d3d9Render = Moho::DeviceD3D9::GetInstance();
 
+	if (simDriver == nullptr)
+	{
+		while (simDriver == nullptr)
+		{
+			simDriver = Moho::SimDriver::GetInstance();
+			Sleep(2000);
+		}
+	}
+
+	while(d3d9Render == nullptr)
+		d3d9Render = Moho::DeviceD3D9::GetInstance();
+
+	while (d3d9Render->m_pDevice == nullptr)
+	{
+		Sleep(200);
+	}
+
+	printf("Game Ready\n");
+
 	// Set up our drawing related stuff
-	Renderer::Get()->Init(d3d9Render->m_pDevice);
 	DirectXVMTManager.Initialise((DWORD*)d3d9Render->m_pDevice);
-	oPresent = (Present)DirectXVMTManager.HookMethod((DWORD)&mPresent, 17);
-	oReset = (Reset)DirectXVMTManager.HookMethod((DWORD)&mReset, 16);
+	oPresent = (Present)DirectXVMTManager.HookMethod((DWORD)mPresent, 17);;
+	oReset = (Reset)DirectXVMTManager.HookMethod((DWORD)mReset, 16);
 
 	return 0;
 }
@@ -123,6 +143,13 @@ bool GetBox(Moho::Unit* pEntity, ScreenRect &result)
 HRESULT __stdcall mPresent(LPDIRECT3DDEVICE9 Device, CONST RECT* pSourceRect, CONST RECT* pDestRect, HWND hDestWindowOverride, CONST RGNDATA* pDirtyRegion)
 {
 	Renderer* r = Renderer::Get();
+	static bool firstRun = false;
+	if (!firstRun)
+	{
+		firstRun = true;
+		r->Init(Device);
+	}
+
 	r->BeginDraw();
 	//-------------------------------------------------------
 
@@ -132,14 +159,31 @@ HRESULT __stdcall mPresent(LPDIRECT3DDEVICE9 Device, CONST RECT* pSourceRect, CO
 
 	if (simDriver != nullptr)
 	{
+		static bool last = false;
+		bool thistime = GetAsyncKeyState(VK_DOWN);
+		if (last == false && thistime)
+		{
+			if (simDriver->m_pSim->luaObject->ExecuteFile("dump.lua"))
+				printf("[DEBUG] Script Succeeded\n");
+			else
+				printf("[DEBUG] Syntax Error\n");
+		}
+
+		last = thistime;
+
 		for (auto army : simDriver->m_pSim->m_armyList)
 		{
+			if (army == nullptr) continue;
+
 			for (auto platoon : army->m_platoonList)
 			{
+				if (platoon == nullptr || platoon->m_unitGroupList.begin() == nullptr || platoon->m_unitGroupList.size() < 1)
+					continue;
+
 				for (auto tempunit : platoon->m_unitGroupList[0]->m_units)
 				{
 					Moho::Unit* pUnit = tempunit->FixPointer();
-					if (pUnit && pUnit->m_pBlueprint && pUnit->m_pBlueprint->m_strUnitName.length() > 0)
+					if (tempunit && pUnit->m_pBlueprint && pUnit->m_pBlueprint->m_strUnitName.length() > 0)
 					{
 						D3DXVECTOR3 result; ScreenRect box;
 						if (Moho::WorldToScreen(Moho::Vector3(pUnit->m_vecPosition.x, pUnit->m_vecPosition.y, pUnit->m_vecPosition.z), result))
@@ -181,6 +225,7 @@ HRESULT __stdcall mPresent(LPDIRECT3DDEVICE9 Device, CONST RECT* pSourceRect, CO
 HRESULT __stdcall mReset(LPDIRECT3DDEVICE9 Device, D3DPRESENT_PARAMETERS* p)
 {
 	Renderer::Get()->OnResetDevice();
+	printf("Reset\n");
 	return oReset(Device, p);
 }
 

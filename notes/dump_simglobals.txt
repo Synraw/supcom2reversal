@@ -1,0 +1,532 @@
+Builder:
+BaseBuilderTemplate:
+AddUnitUpgrade = function: 1387F3A4
+MATH_IRound = function: 12BDB14C
+SetArmyAIPersonality = function: 12BBDF6C
+CreateTrail = function: 16605C6C
+VDist3 = function: 12BD3DCC
+__modules:
+IsCollisionBeam = function: 12BD32AC
+CreateBuildSliceBeams = function: 137BDAFC
+BOOLEAN = function: 1378EBC4
+CreateEmitterAtBone = function: 16605FEC
+DebugGetSelection = function: 12BD33EC
+CreateCollisionDetector = function: 1660528C
+WaitFor = function: 12BD382C
+VSetMagnitude = function: 12BD3EAC
+IsEntity = function: 12BD33AC
+DiskFindFiles = function: 12BD36EC
+sort_down_by = function: 149DB6C4
+DamageArea = function: 12BC58AC
+doscriptConditional = function: 12BD3B0C
+CreateTeleportEffects = function: 137BD0AC
+KnockbackScaledByRadius = function: 12BC582C
+CreateResourceDeposit = function: 165EFA6C
+GetNonShadowedBlueprintSource = function: 12BDB74C
+dirty_module = function: 149C7E1C
+CreateEffectsWithRandomOffset = function: 137BDF84
+IsAlly = function: 12BBDC4C
+UnlockAllUnitsNoResearch = function: 12BBDE6C
+CreateProp = function: 12BBDBCC
+GetMovieDuration = function: 12BDB82C
+AddBuildRestriction = function: 12BBDECC
+IssuePodDock = function: 12BBD80C
+SetArmyPlans = function: 12BBDA2C
+BuilderDefMeta:
+__diskwatch:
+getfenv = function: 166B3B6C
+PlatoonTemplates:
+NotifyUpgrade = function: 12BB978C
+CreatePrefetchSet = function: 12BD39AC
+AddAgentConstantForce = function: 12BD31AC
+GetTerrainTypeOffset = function: 12BC5ECC
+IssueFormMove = function: 12BBD7CC
+CreateRotator = function: 1660570C
+CreateFootPlantController = function: 166055EC
+BuffDefMeta:
+DestroySession = function: 1383664C
+Buffs:
+io:
+LocGlobals:
+IsXbox = function: 12BC5AAC
+HashString = function: 12BDB60C
+language = function: 149C769C
+assert = function: 166B3A8C
+SyncUnitUpgrades = function: 1387F494
+CreateAttachLight = function: 16605F6C
+ResearchDefinitions:
+SetArmyFactionIndex = function: 12BBDF8C
+CreateBeamEntityToEntity = function: 16605B2C
+__kore_intern_next = function: 166B3FAC
+math:
+CreateEmitterOnEntity = function: 16605D0C
+BlueprintLoaderUpdateProgress = function: 12BDB76C
+import = function: 149C7DCC
+SetArmyColor = function: 12BBDF4C
+PhysicsSetWaterDensity = function: 16617F6C
+SecondsPerTick = function: 12BDB66C
+IssueTransportUnload = function: 12BBD8AC
+collectgarbage = function: 166B3ACC
+VDist2Sq = function: 12BD3CAC
+TrashBag:
+RegisterVendorWeaponItemBlueprint = function: 12BDB5CC
+RegisterAnimTreeBlueprint = function: 12BDB44C
+PlayCaptureEffects = function: 137BC264
+CreateLightParticle = function: 16605CCC
+Rect = function: 12BD3A4C
+STR_Utf8Len = function: 12BDB08C
+RestrictEscapePods = function: 12BBDE4C
+VDist2 = function: 12BD3D4C
+ParseEntityCategoryEx = function: 149DBA84
+SetLocalizedFEV = function: 12BDB38C
+ScenarioInfo:
+print = function: 12BC580C
+STR_GetTokens = function: 12BD302C
+load = function: 166B39EC
+tostring = function: 166B37EC
+RemoveBuff = function: 138D70D4
+CreateEmittersOnEntity = function: 16605CEC
+CreateDialogue = function: 1387F96C
+VRotateAxisAngle = function: 12BDB18C
+RegisterAiSkirmishFactoryBlueprint = function: 12BDB50C
+GetBuildVersion = function: 12BDB9EC
+require = function: 166A89CC
+StateProxyTag:
+IssueEscort = function: 12BBD78C
+VAdd = function: 12BD3FEC
+CreateAimController = function: 166050CC
+pcall = function: 166B392C
+RegisterMeshBlueprint = function: 12BDB22C
+ArmyBonusDefMeta:
+GetArmyUnitCostTotal = function: 12BBDD8C
+IssueUpgrade = function: 12BBD98C
+SourceAndDestPathableLand = function: 12BC5A6C
+CreateSplat = function: 16605D8C
+CreateSlaver = function: 1660598C
+CameraSetMinNearClipNIS = function: 12BDB9AC
+BuffCalculate = function: 138D6A5C
+IssueReclaim = function: 12BBD94C
+dump_table = function: 1709C804
+GenerateRandomOrientation = function: 12BC5D0C
+VLengthXZSq = function: 12BD3ECC
+CreateUnitHPR = function: 12BB9BAC
+GrantAllResearchToArmies = function: 18135264
+RegisterEntityCostumeBlueprint = function: 12BDB7AC
+CreateEconomyEvent = function: 12BD322C
+SetPlayableRect = function: 12BC5E4C
+RemoveAllUnitUpgrades = function: 1387F46C
+RandomIter = function: 1B39D32C
+categories:
+IsProp = function: 12BD332C
+ParseEntityCategory = function: 12BC5DAC
+IsRetailBuild = function: 12BDB98C
+SetAmbientReverb = function: 12BD314C
+IssueClearFactoryCommands = function: 12BBD42C
+VECTOR2 = function: 1378EC3C
+RegisterUnitBlueprint = function: 12BDB28C
+ArmyInitializePrebuiltUnits = function: 12BBDDEC
+EndLoggingStats = function: 12BD374C
+SetArmyStart = function: 12BBDA6C
+GetWaterHeight = function: 12BC5EEC
+VLengthSq = function: 12BD3F0C
+GetTerrainType = function: 12BC5EAC
+GetCurrentCommandSource = function: 12BC5BCC
+bitlib:
+IssueBuildMobile = function: 12BBD9EC
+SpawnLavaPlumes = function: 137BC32C
+CleanupEffectBag = function: 137BC28C
+kpairs = function: 1B39D4BC
+UISetLanguageId = function: 166A83AC
+VLengthXZ = function: 12BD3EEC
+EntityCategoryEmpty = function: 12BDB68C
+SetAlliance = function: 12BBDCCC
+CreateEmittersAtBone = function: 16605FCC
+OrientFromDir = function: 12BDB36C
+MinLerp = function: 12BDB30C
+ApplyBuff = function: 1379F304
+setfenv = function: 166B3B2C
+BuilderGroups:
+SimRequestPause = function: 12BC5B6C
+SetArmyEconomy = function: 12BBDDAC
+SetArmyStatsSyncArmy = function: 12BD310C
+CreateBeamEmitter = function: 16605B6C
+VDist3XZSq = function: 12BD3CEC
+WARN = function: 12BD3B8C
+package:
+GetUnitBlueprintByName = function: 12BC5E0C
+IssueMoveOffFactory = function: 12BBD7EC
+Trace = function: 12BD38CC
+ArmySetIgnoreWaterBuildCap = function: 12BC51CC
+doscript = function: 12BD3B2C
+AttachBeamsOnProjectile = function: 137BD124
+WaitTicks = function: 166B3D8C
+STRING = function: 1378ECDC
+CreateWreckageEffects = function: 137BC304
+GetReclaimablesInRect = function: 12BC5C4C
+CreatePropHPR = function: 12BBDBEC
+RegisterEmitterBlueprint = function: 12BDB58C
+SetArmyUnitCap = function: 12BBDD4C
+RemoveUnitUpgrade = function: 1387F3CC
+PrintText = function: 1387F944
+CreateWeaponMuzzleFlashEffect = function: 137BDF5C
+VDiff = function: 12BD3C0C
+CreateSlider = function: 1660594C
+AttachPolytrailsOnProjectile = function: 137BD0FC
+sortedpairs = function: 149DBCB4
+ResearchExperience:
+RECTANGLE = function: 1378ECB4
+module = function: 17518BAC
+VAngleBetween = function: 12BDB16C
+CreateBoneEffects = function: 137BDFAC
+GetClosestMarker = function: 12BC5FCC
+STR_itox = function: 12BDB0AC
+__kore_intern_inext = function: 166B3FCC
+SpecFootprints = function: 12BDB2AC
+setmetatable = function: 166B3B0C
+SetTerrainType = function: 12BC5E8C
+tab_find_exists = function: 1709C78C
+IsDestroyed = function: 12BD38AC
+QRotate = function: 12BD3A0C
+GetGameTimeSeconds = function: 12BC5CEC
+debug:
+CreateAttachedUnit = function: 12BB9B4C
+BuilderGroup:
+SubmitXMLArmyStats = function: 12BD30AC
+TryCopyPose = function: 12BD312C
+error = function: 166B3A4C
+ArmyIsCivilian = function: 12BBDFCC
+SelectedUnit = function: 12BC5DEC
+VDist3Sq = function: 12BD3D8C
+RemoveEconomyEvent = function: 12BD320C
+safecall = function: 1B39D41C
+CoordinateAttacks = function: 12BBD72C
+CreateSimSyncGameResult = function: 1387FAD4
+Warp = function: 12BC5C0C
+ArmyIsOutOfGame = function: 12BBDE0C
+PostInitWeaponBlueprint = function: 12BDB7CC
+GetFiringVelocityWithHeight = function: 12BD324C
+RegisterAiSkirmishArchetypeBlueprint = function: 12BDB46C
+RemoveBuildRestriction = function: 12BBDEAC
+AddMarker = function: 12BC5FEC
+SyncPlayableRect = function: 1387F534
+PlatoonTemplateDefMeta:
+GetMapSize = function: 12BC5F4C
+GetVersion = function: 12BDB3EC
+RegisterPropBlueprint = function: 12BDB26C
+CreateBlueSolidBuildBeams = function: 137BDB74
+HasBuff = function: 138D1084
+SetIgnorePlayableRect = function: 12BBDD0C
+kore:
+CreateSimSyncSound = function: 1387FA0C
+IssueCapture = function: 12BBD92C
+importConditional = function: 149C7DF4
+Damage = function: 12BC58CC
+CreateUnit2 = function: 12BB9B8C
+DestroyAttachLight = function: 16605F4C
+SetArmyShowScore = function: 12BBDF0C
+BaseBuilderTemplates:
+rawget = function: 166B386C
+SimUnitUpgrades:
+CreateStorageManip = function: 1660582C
+ArmyBonusBlueprint:
+SetTerrainTypeRect = function: 12BC5E6C
+GetAverageBoundingXYZRadius = function: 137BC2DC
+SubmitVictoryArmyStats = function: 12BD30CC
+Random = function: 12BC5A2C
+IssueFactoryAssist = function: 12BBD76C
+LUnitMoveNear = function: 166050EC
+StunArea = function: 1661BB6C
+SetArmyOutOfGame = function: 12BC51EC
+newproxy = function: 166B3BAC
+CreateAttachedEmitter = function: 16605CAC
+OkayToMessWithArmy = function: 12BBDE2C
+StartCountdown = function: 1387F87C
+iscallable = function: 149C7B74
+IssueFormAttack = function: 12BBD70C
+_G = table: 1B39D1EC
+type = function: 166B374C
+AITarget = function: 12BDB62C
+RequestAllArmyStatsSyncArmy = function: 12BD308C
+CreateSplatOnBone = function: 16605D6C
+IssueSiloBuildNuke = function: 12BBD6EC
+unpack = function: 166B376C
+IssueRepair = function: 12BBD9CC
+CreateBeamToEntityBone = function: 16605C2C
+EndGame = function: 12BC5B8C
+LOC = function: 1B39D2B4
+GenerateArmyStart = function: 12BBDA4C
+IssueClearCommands = function: 12BBD4CC
+GetGameTick = function: 12BC5CCC
+IssueTransportUnloadSpecific = function: 12BBD86C
+PlatoonTemplate:
+CreateBuilderArmController = function: 1660530C
+IssueFormPatrol = function: 12BBD66C
+__serialize_object_for_name:
+IssueBuildFactory = function: 12BBD84C
+CreateAnimator = function: 1660554C
+EntityCategoryCountAroundPosition = function: 12BC5D2C
+profile:
+IssuePause = function: 12BBD48C
+__blueprints:
+GetArmyUnitCap = function: 12BBDD6C
+IssueScript = function: 12BBD96C
+SetSkirmishLandMap = function: 12BC5FAC
+CreateDecal = function: 16605DAC
+BuffAffects:
+ShouldCreateInitialArmyUnits = function: 12BBDACC
+IssueSacrifice = function: 12BBD9AC
+RegisterAiSkirmishBaseBlueprint = function: 12BDB48C
+IssueTeleportToBeacon = function: 12BBD88C
+SetUIBuildRestrictions = function: 12BBDEEC
+sort_by = function: 149DB69C
+InitializeArmyAI = function: 12BBDA0C
+CreateAttachedBeam = function: 16605C4C
+CreateRepairBeams = function: 12D2E51C
+IssueFormAggressiveMove = function: 12BBD62C
+CreateTurnController = function: 16605BCC
+UnlockAllResearch = function: 12BBDE8C
+IssueDive = function: 12BBD46C
+GetTargetUnit = function: 12BBD52C
+LocSubtitleChannels:
+Sync:
+next = function: 166B372C
+CreateUnit = function: 12BB9BCC
+IssueFerry = function: 12BBD60C
+Callback:
+SimConExecute = function: 12BC5DCC
+GetEntityById = function: 12BC5B0C
+FlushIntelInRect = function: 12BC5E2C
+__kore_next_placeholder = function: 166B3FEC
+BuilderGroupDefMeta:
+GetSurfaceHeight = function: 12BC5F0C
+Extends3 = function: 12C43BAC
+CreateUnitAtBone = function: 12BB9B6C
+coroutine:
+SetArmyColorIndex = function: 12BBDFAC
+VMult = function: 12BD3FAC
+SortEntitiesByDistanceXZ = function: 12BD328C
+CheatsEnabled = function: 12BC5BEC
+EntityCategoryContains = function: 12BC5D8C
+LOC_ALL = function: 149C764C
+CurrentThread = function: 12BD3BCC
+VNormal = function: 12BD3F6C
+AudioSetLanguage = function: 12BD318C
+GetUnitById = function: 12BC5AEC
+ScaleEmittersParam = function: 137BDAD4
+GetCommandLineArg = function: 12BD372C
+VRotateY = function: 12BDB1AC
+ChangeState = function: 12E29AEC
+GetEntitiesInRect = function: 12BC5C8C
+ChangeUnitArmy = function: 12BC5C2C
+CreateSimSyncVoice = function: 1387FA34
+UIAreMoviesFinished = function: 166A800C
+NoteFocusArmyChanged = function: 1387F764
+SetArmyHandicap = function: 12BBDF2C
+PrintBuffs = function: 138D1B9C
+EffectTemplates:
+CreateInitialArmyUnit = function: 12BBDCEC
+FLOAT = function: 1378EC14
+RegisterPlatoonBlueprint = function: 12BDB4CC
+Sound = function: 12BDB3AC
+GetPrefetchList = function: 138365D4
+DrawLine = function: 12BC502C
+SimResume = function: 12BC5B4C
+_c_CreateEntity = function: 16617C6C
+mmt:
+GetXboxLocaleRatingsId = function: 12BD39CC
+RegisterWeaponBlueprint = function: 12BDB7EC
+LOCF = function: 149DBDF4
+STR_xtoi = function: 12BDB0EC
+ResumeThread = function: 12BD3BEC
+dofile = function: 166B39AC
+IssueMove = function: 12BBD40C
+Scenario:
+GROUP = function: 1378ED04
+QUATERNION = function: 1378EC8C
+UISetMovieSubtitleChannel = function: 12BDBD4C
+GetFocusArmy = function: 12BD31EC
+INTEGER = function: 1378EBEC
+GetBlueprint = function: 1661716C
+IssueNuke = function: 12BBD6CC
+ListArmies = function: 12BBDAAC
+ArmyBrains:
+CreateSimSyncPlayerQueryResults = function: 1387FB9C
+VPerpDot = function: 12BD3E6C
+DefaultPrefetchSet = function: 137BCAFC
+OnCreateArmyBrain = function: 13836A34
+serialize:
+xpcall = function: 166B396C
+BuffBlueprint:
+GetCameraRotationAngle = function: 12BD378C
+CreatePropResource = function: 12BBDBAC
+SetSkirmishAmphibiousMap = function: 12BC5F8C
+RegisterRawAnimBlueprint = function: 12BDB42C
+HasCommandLineArg = function: 12BD370C
+UIGetTransitionToGame = function: 166A874C
+CreateLight = function: 16605FAC
+RegisterAbilityBlueprint = function: 12BDB54C
+moho:
+LUnitMove = function: 1660510C
+Vector = function: 12BD3A8C
+ArmyGetHandicap = function: 12BBDDCC
+Basename = function: 12BD366C
+SetSkirmishResearchNotRequired = function: 12BC5F6C
+LightClass = function: 12C43AEC
+IsCommandDone = function: 12BBD4EC
+IsGameOver = function: 12BC5B2C
+CreateAttachedEmitters = function: 16605C8C
+DamageRing = function: 12BC588C
+RegisterProjectileBlueprint = function: 12BDB24C
+EntityCategoryCount = function: 12BC5D4C
+PlayReclaimEndEffects = function: 137BC23C
+PlayReclaimEffects = function: 137BC214
+MetaImpact = function: 12BC586C
+CreateCybranBuildBeams = function: 137BC1EC
+VECTOR3 = function: 1378EC64
+CreateThrustController = function: 1660580C
+AddAgentFalloffForce = function: 12BD31CC
+GetUnitSizes = function: 137BC2B4
+rawequal = function: 166B382C
+DiskGetFileInfo = function: 12BD36CC
+IsUnit = function: 12BD336C
+EnableReticleDrift = function: 12BDB9CC
+UnitData:
+__serialize_name_for_object:
+string:
+EconomyEventIsDone = function: 12BD35EC
+UISetMovieAudioTrack = function: 12BDBCEC
+LightFxEnable = function: 166A806C
+CreateBuildAssistBeams = function: 137BDB24
+BaseBuilderTemplateDefMeta:
+IsNeutral = function: 12BBDFEC
+EulerToQuaternion = function: 12BDB34C
+GetDeadReckonWithSpeed = function: 12BD326C
+IssueTransportLoad = function: 12BBD8CC
+IsCommand = function: 12BC516C
+RegisterTrailEmitterBlueprint = function: 12BDB5AC
+PhysicsSetAirDensity = function: 16617F4C
+CreateTerrainImpactEffects = function: 137BD084
+IsBlip = function: 12BD32EC
+CreateImpactEffectsOnProjectileCollision = function: 137BD0D4
+EntityCategoryGetUnitList = function: 12BDB6AC
+RegisterBeamBlueprint = function: 12BDB56C
+AttachEffectsOnProjectile = function: 137BD14C
+BeginSession = function: 138365FC
+MinSlerp = function: 12BDB2CC
+IsProjectile = function: 12BD32CC
+RegisterVendorBlueprint = function: 12BDB20C
+PreloadUnits = function: 13836AAC
+IssueTeleport = function: 12BBD6AC
+GetUnitsFromGroupTable = function: 13836A84
+InitializePrebuiltUnits = function: 13836A5C
+Prefetcher = userdata: 12C2F2AC
+SourceAndDestPathableAmphibious = function: 12BC5A8C
+DrawCircle = function: 12BC506C
+SetupSession = function: 13836A0C
+VRotateZ = function: 12BDB1EC
+IssueAggressiveMove = function: 12BBD64C
+__factory_objects:
+FileCollapsePath = function: 12BD360C
+EnumColorNames = function: 12BD390C
+IssueGuard = function: 12BBD7AC
+LockInput = function: 1387FA5C
+RegisterAiSkirmishFormBlueprint = function: 12BDB4EC
+__active_mods:
+VRotateX = function: 12BD3E2C
+rawset = function: 166B38AC
+PlayBuffEffect = function: 138D1AFC
+CancelCountdown = function: 1387F8A4
+table:
+VDot = function: 12BD3C8C
+SPEW = function: 12BD3B6C
+KillThread = function: 12BD386C
+PhysicsSetGravity = function: 16617F8C
+_ALERT = function: 1702D3AC
+BuffAffectUnit = function: 138D6854
+BuffWorkThread = function: 138D78CC
+IssueDestroySelf = function: 12BBD8EC
+IsInstance = function: 12E29F3C
+AttachBeamEntityToEntity = function: 16605B0C
+DiskToLocal = function: 12BD36AC
+CreateSimSyncCameraRequest = function: 1387FBC4
+GetXboxLanguageId = function: 12BD39EC
+CreateSimSyncPlayerQuery = function: 1387FAFC
+SubmitEliminatedArmyStats = function: 12BD30EC
+ipairs = function: 1B39D494
+SplitProp = function: 12BBDB6C
+ForkThread = function: 12BD388C
+SuspendCurrentThread = function: 12BD380C
+loadfile = function: 166B3A0C
+Extends2 = function: 12C43B7C
+FlattenMapRect = function: 12BC5A0C
+FloatingEntityText = function: 1387F78C
+GetTargetPosition = function: 12BBD50C
+IssueFactoryRallyPoint = function: 12BBD44C
+OnPostLoad = function: 13836624
+Experience:
+UnlockInput = function: 1387F64C
+BeginLoggingStats = function: 12BD376C
+RegisterEntityCostumeSetBlueprint = function: 12BDB78C
+IssueKillSelf = function: 12BBD90C
+ResetSyncTable = function: 1387F084
+MATH_Lerp = function: 12BDB12C
+HasLocalizedVO = function: 12BD316C
+tonumber = function: 166B37AC
+IssueAttack = function: 12BBD74C
+os:
+VLength = function: 12BD3F2C
+Builders:
+_c_CreateShield = function: 12BD35CC
+Vector2 = function: 12BD3ACC
+ArmyBonuses:
+select = function: 166B38EC
+VDist3XZ = function: 12BD3D0C
+DrawLinePop = function: 12BC504C
+VCross = function: 12BD3C4C
+InitialRegistration = false
+SetAllianceOneWay = function: 12BBDCAC
+LocExpand = function: 149A5124
+exists = function: 12BD306C
+Extends = function: 12C43B1C
+getmetatable = function: 166B3AEC
+RegisterVendorCostumeItemBlueprint = function: 12BDB5EC
+RegisterAiSkirmishResponseBlueprint = function: 12BDB4AC
+WaitSeconds = function: 138C746C
+GetTerrainHeight = function: 12BC5F2C
+RegisterAnimPackBlueprint = function: 12BDB40C
+Knockback = function: 12BC584C
+__module_metatable:
+PointVector = function: 12BD3A6C
+State:
+repr = function: 12E2942C
+GetArmyBrain = function: 12BBDA8C
+RegisterAiSkirmishEngineerBlueprint = function: 12BDB52C
+GetCameraPositionAndZoom = function: 12BD37AC
+CreateEmitterPositionVector = function: 16605C0C
+IssuePatrol = function: 12BBD68C
+CreateEmitterAtEntity = function: 16605D4C
+__language = 
+GetSystemTimeSecondsOnlyForProfileUse = function: 12BC5CAC
+GetUnitsInRect = function: 12BC5C6C
+CreateBlueWavyBuildBeams = function: 137BDB4C
+CreateBeamEmitterOnEntity = function: 16605B4C
+AttachBeamToEntity = function: 16605AEC
+EntityCategoryFilterDown = function: 12BC5D6C
+CreateEmittersAtEntity = function: 16605D2C
+Dirname = function: 12BD362C
+SetIgnoreArmyUnitCap = function: 12BBDD2C
+Class:
+_VERSION = $release r$build
+SetAlliedVictory = function: 12BBDC8C
+DestroyLight = function: 16605F8C
+IssueStop = function: 12BBD4AC
+IsEnemy = function: 12BBDC0C
+UISetEnableWhitespaceWordWrap = function: 12BDBEAC
+ConvertCClassToLuaClass = function: 12C43ABC
+IssueAbility = function: 12BBD82C
+loadstring = function: 166B3BEC
+pairs = function: 1B39DA0C
+LightFxStartSequence = function: 166A8F4C
+LOG = function: 12BD3BAC
+STR_Utf8SubString = function: 12BD300C
+

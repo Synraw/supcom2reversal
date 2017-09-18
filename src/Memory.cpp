@@ -118,10 +118,10 @@ DWORD	Memory::VMTManager::HookMethod(DWORD NewFunction, int Index)
 
 DWORD	Memory::VMTManager::GetOriginalFunction(int Index)
 {
-	return OriginalTable[Index];
+	return OriginalTable[Index+1];
 }
 
 void	Memory::VMTManager::Restore()
 {
-	*Instance = (DWORD)OriginalTable;
+	*Instance = (DWORD)(OriginalTable);
 }
